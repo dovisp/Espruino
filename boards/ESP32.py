@@ -50,7 +50,7 @@ info = {
  'espruino_page_link'       : 'ESP32',
  'default_console'          : "EV_SERIAL1",
  'default_console_baudrate' : "115200",
- 'variables'                : 16383, # See note above
+ 'variables'                : 65535, # See note above
  'io_buffer_size'           : 4096, # How big is the input buffer (in bytes). Default on nRF52 is 1024
  'binary_name'              : 'espruino_%v_esp32.bin',
  'build' : {
@@ -59,10 +59,6 @@ info = {
      'ESP32',
      'NET',
      'GRAPHICS',
-     'CRYPTO','SHA256','SHA512',
-     'TLS',
-     'TELNET',
-     'NEOPIXEL',
      'FILESYSTEM',
      'BLUETOOTH'
    ],
@@ -71,7 +67,7 @@ info = {
      'DEFINES+=-DESP_STACK_SIZE=25000',
      'DEFINES+=-DJSVAR_MALLOC', # Allocate space for variables at jsvInit time
      'DEFINES+=-DUSE_FONT_6X8',
-     'ESP32_FLASH_MAX=1572864'
+     'ESP32_FLASH_MAX=8388608'
    ]
  }
 };
@@ -91,7 +87,7 @@ chip = {
   'saved_code' : {
     'address' : 0x320000,
     'page_size' : 4096,
-    'pages' : 224, # 896kb - see partitions_espruino.csv
+    'pages' : 1280, # 896kb - see partitions_espruino.csv
     'flash_available' : 1344, # firmware can be up to this size - see partitions_espruino.csv
   },
 };

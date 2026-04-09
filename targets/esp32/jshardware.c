@@ -465,13 +465,8 @@ void jshSetOutputValue(JshPinFunction func, int value) {
 }
 
 void jshEnableWatchDog(JsVarFloat timeout) {
-  wdt_enabled = true;
-  esp_task_wdt_init((int)(timeout+0.5)
-#if !(ESP_IDF_VERSION_MAJOR>=5)
-   , true
-#endif
-  ); //enable panic so ESP32 restarts
-  esp_task_wdt_add(NULL); //add current thread to WDT watch
+	esp_task_wdt_deinit();
+	jsError("*** WatchDog enabled ;)");
 }
 
 // Kick the watchdog
